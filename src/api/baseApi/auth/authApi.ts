@@ -1,14 +1,18 @@
-import { baseApi } from "@/api/baseApi";
+import { baseApi } from "@/api/baseApi/baseApi";
+import type { LoginResponse } from "./types";
+import { API_ROUTES } from "../apiRoutes";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation<undefined, { email: string; password: string }>({
-      query: (data) => ({
-        url: "/auth/login",
-        method: "POST",
-        body: data,
-      }),
-    }),
+    login: builder.mutation<LoginResponse, { email: string; password: string }>(
+      {
+        query: (data) => ({
+          url: API_ROUTES.LOGIN,
+          method: "POST",
+          body: data,
+        }),
+      }
+    ),
   }),
 });
 

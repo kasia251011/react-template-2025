@@ -7,8 +7,8 @@ const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     const session = (getState() as RootState).session;
-    if (session.token) {
-      headers.set("Authorization", `Bearer ${session.token}`);
+    if (session.accessToken) {
+      headers.set("Authorization", `Bearer ${session.accessToken}`);
     }
     return headers;
   },
