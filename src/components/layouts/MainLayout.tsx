@@ -12,7 +12,9 @@ export function MainLayout() {
   return (
     <ConfigProvider theme={theme}>
       <Provider store={store}>
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
       </Provider>
     </ConfigProvider>
   );
