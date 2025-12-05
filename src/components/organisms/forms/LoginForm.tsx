@@ -1,11 +1,13 @@
 import { Btn } from "@/components/atoms/Button";
 import { SchemaForm } from "@/components/molecules/SchemaForm";
+import { SelectInput } from "@/components/molecules/SelectInput";
 import { TextInput } from "@/components/molecules/TextInput";
 import { useSchemaForm } from "@/hooks/useSchemaForm";
 import z from "zod";
 
 const loginFormSchema = z.object({
   email: z.string().min(1, "Email is required"),
+  country: z.string().min(1, "Country is required"),
   password: z.string().min(1, "Password is required"),
 });
 type LoginFormSchema = z.infer<typeof loginFormSchema>;
@@ -34,6 +36,18 @@ export function LoginForm() {
             placeholder="m@example.com"
             required
             error={form.formState.errors.email?.message}
+          />
+        </div>
+        <div className="grid gap-2">
+          <p>Country</p>
+          <SelectInput
+            name="country"
+            placeholder="Select your country"
+            options={[
+              { value: 'pl', label: "Poland" },
+              { value: 'us', label: "United States" },
+              { value: 'de', label: "Germany" },
+            ]}
           />
         </div>
         <div className="grid gap-2">
