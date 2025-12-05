@@ -1,4 +1,8 @@
+import { useHealthCheck } from "@/hooks/useHealthCheck";
+
 export const HomePage = () => {
+  useHealthCheck()
+  
   return (
     <div className="">
       <h1 className="">Welcome to the Home Page</h1>

@@ -1,6 +1,7 @@
 import { config } from "@/config/config";
 import type { RootState } from "@/redux/store";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { API_ROUTES } from "./apiRoutes";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: config.BACKEND_URL,
@@ -18,8 +19,8 @@ export const baseApi = createApi({
   baseQuery,
   tagTypes: ["self"],
   endpoints: (builder) => ({
-    healthCheck: builder.query({
-      query: () => "/health-check",
+    healthCheck: builder.query<{ status: string }, void>({
+      query: () => API_ROUTES.HEALTH_CHECK,
     }),
   }),
 });
