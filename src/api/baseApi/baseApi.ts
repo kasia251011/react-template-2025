@@ -1,10 +1,9 @@
+import { config } from "@/config/config";
 import type { RootState } from "@/redux/store";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL || "/api";
-
 const baseQuery = fetchBaseQuery({
-  baseUrl: BASE_URL,
+  baseUrl: config.BACKEND_URL,
   prepareHeaders: (headers, { getState }) => {
     const session = (getState() as RootState).session;
     if (session.accessToken) {

@@ -12,6 +12,7 @@ export const articlesApi = strapiApi.injectEndpoints({
           populate: "*",
         },
       }),
+      providesTags: ["articles"],
     }),
 
     getArticle: build.query<StrapiResponse<unknown>, { id: string }>({
@@ -22,6 +23,7 @@ export const articlesApi = strapiApi.injectEndpoints({
           populate: "*",
         },
       }),
+      providesTags: ["articles"],
     }),
   }),
 });
